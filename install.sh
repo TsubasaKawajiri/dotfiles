@@ -15,5 +15,7 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 cp .zshrc ~/.zshrc
 cp -r .config/ ~/.config
 
+compaudit | xargs sudo chmod g-w
+
 anyenv install nodenv
 anyenv install rbenv
