@@ -10,8 +10,10 @@ alias find='fd'
 alias ps='procs'
 alias grep='rg'
 
-PATH=/usr/local/opt/openssl/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.anyenv/bin:
+PATH=/usr/local/opt/openssl/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.anyenv/bin:/usr/local/opt/openssl@1.1/bin:
 export PATH
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 
 eval "$(anyenv init -)"
 
