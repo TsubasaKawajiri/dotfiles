@@ -1,0 +1,30 @@
+[character]
+symbol = "🦄 💬 ❯"
+error_symbol = "🦄 💢 ❯"
+use_symbol_for_status = true
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+unknown_symbol = "👽 "
+threshold = 100.0
+show_cycle = true
+
+[git_branch]
+symbol = "🎄 "
+
+[git_status]
+conflicted = "⚔️"
+ahead = "🏎 💨"
+behind = "🏃 💨"
+untracked = "❗"
+stashed = "📦"
+modified = "📝"
+added = "➕"
+renamed = "📛"
+deleted = "🗑"
