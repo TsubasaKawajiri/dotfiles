@@ -14,6 +14,7 @@ PATH=/usr/local/opt/openssl/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.anyenv/b
 export PATH
 export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export EDITOR=vim
 
 eval "$(anyenv init -)"
 
