@@ -6,9 +6,11 @@ alias gs='g status'
 alias ls='exa -a'
 alias cat='bat'
 alias less='bat'
-alias find='fd'
+#alias find='fd'
 alias ps='procs'
 alias grep='rg'
+alias dc='docker compose'
+alias claude=/usr/local/bin/claude
 
 PATH=/usr/local/opt/openssl/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.anyenv/bin:/usr/local/opt/openssl@1.1/bin:
 export PATH
@@ -89,5 +91,4 @@ setopt COMPLETE_IN_WORD
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 eval "$(starship init zsh)"
-eval "$(dip console)"
 
