@@ -3,7 +3,7 @@ alias g='git'
 alias cl='clear'
 alias gs='g status'
 # use Rust binaly
-alias ls='exa -a'
+alias ls='eza -a'
 alias cat='bat'
 alias less='bat'
 #alias find='fd'
