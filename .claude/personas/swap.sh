@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # ~/.claude/personas/swap.sh
-# Switch the Claude Code "language" persona in ~/.claude/settings.json
+# Switch the active persona written to ~/.claude/persona.md
+# (persona.md is loaded from ~/.claude/CLAUDE.md via @persona.md)
 #
 # Usage:
 #   bash ~/.claude/personas/swap.sh <persona>
@@ -12,7 +13,7 @@
 set -euo pipefail
 
 PERSONA="${1:-}"
-SETTINGS="$HOME/.claude/settings.json"
+OUTPUT="$HOME/.claude/persona.md"
 PERSONA_DIR="$HOME/.claude/personas"
 
 if [[ -z "$PERSONA" ]]; then
@@ -40,27 +41,15 @@ if [[ ! -f "$PERSONA_FILE" ]]; then
   exit 1
 fi
 
-if [[ ! -f "$SETTINGS" ]]; then
-  echo "Error: settings file not found at $SETTINGS"
-  exit 1
-fi
-
-python3 - "$SETTINGS" "$PERSONA_FILE" <<'PYEOF'
-import json
-import sys
-
-settings_path, persona_path = sys.argv[1], sys.argv[2]
-
-with open(settings_path, "r", encoding="utf-8") as f:
-    data = json.load(f)
-
-with open(persona_path, "r", encoding="utf-8") as f:
-    data["language"] = f.read().strip()
-
-with open(settings_path, "w", encoding="utf-8") as f:
-    json.dump(data, f, ensure_ascii=False, indent=2)
-    f.write("\n")
-PYEOF
+{
+  echo "# ペルソナ（persona.md）"
+  echo
+  echo "以下の指示に従って、ユーザーへの回答の口調・話し方を決める。"
+  echo "このファイルは \`personas/swap.sh\` が自動生成する。直接編集せず、\`personas/<name>.txt\` を編集して swap.sh を実行すること。"
+  echo
+  cat "$PERSONA_FILE"
+  echo
+} > "$OUTPUT"
 
 echo "Switched persona to: $PERSONA"
-echo "Effective on next Claude Code message."
+echo "Effective on next Claude Code session (persona.md is loaded at startup)."
