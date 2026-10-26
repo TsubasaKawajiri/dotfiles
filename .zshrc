@@ -10,18 +10,22 @@ alias less='bat'
 alias ps='procs'
 alias grep='rg'
 alias dc='docker compose'
-alias claude=/usr/local/bin/claude
 
-PATH=/usr/local/opt/openssl/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.anyenv/bin:/usr/local/opt/openssl@1.1/bin:
+# Homebrew (Apple Silicon: /opt/homebrew, Intel: /usr/local)
+for brew_bin in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+  [ -x "$brew_bin" ] && eval "$($brew_bin shellenv)" && break
+done
+
+PATH=$HOMEBREW_PREFIX/opt/openssl/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.anyenv/bin
 export PATH
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include"
 export EDITOR=vim
 
 eval "$(anyenv init -)"
 
 # zplug
-source /usr/local/opt/zplug/init.zsh
+source $HOMEBREW_PREFIX/opt/zplug/init.zsh
 
 # 色設定
 autoload -U colors; colors
